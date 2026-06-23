@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Solo Shirts ERP — Design Tokens
+   Amber Gold · Warm Cream · Light Sidebar
+   Sixpay-inspired premium fintech feel, for tailoring.
+   ============================================================ */
+:root {
+  /* Fonts (wired to next/font, with web-safe fallbacks) */
+  --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Brand — Amber Gold (the ONLY primary accent) */
+  --color-brand:        #D97706;
+  --color-brand-light:  #FEF3C7;
+  --color-brand-dark:   #B45309;
+  --color-brand-muted:  #FDE68A;
+  --color-brand-50:     #FFFBEB;
+
+  /* Surfaces */
+  --color-bg:             #FFFCF5;
+  --color-sidebar-bg:     #FFFFFF;
+  --color-sidebar-active: #FEF3C7;
+  --color-surface:        #FFFFFF;
+  --color-surface-alt:    #F9FAFB;
+  --color-border:         #F3F4F6;
+  --color-border-mid:     #E5E7EB;
+
+  /* Text */
+  --color-text-primary:   #111827;
+  --color-text-secondary: #6B7280;
+  --color-text-muted:     #9CA3AF;
+  --color-text-inverse:   #FFFFFF;
+  --color-gray-700:       #374151;
+  --color-gray-300:       #D1D5DB;
+
+  /* Status */
+  --color-success:  #16A34A;  --bg-success:  #DCFCE7;
+  --color-warning:  #D97706;  --bg-warning:  #FEF3C7;
+  --color-danger:   #DC2626;  --bg-danger:   #FEE2E2;
+  --color-info:     #2563EB;  --bg-info:     #DBEAFE;
+  --color-neutral:  #6B7280;  --bg-neutral:  #F3F4F6;
+
+  /* Radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-full: 9999px;
+
+  /* Shadows — very subtle (Sixpay feel) */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+  --shadow-xl: 0 16px 40px rgba(0,0,0,0.12);
+
+  /* Data density */
+  --row-h: 52px;
+  --cell-pad: 20px;
+  --card-pad: 20px;
+}
+
+.dark {
+  --color-bg:             #0C0A09;
+  --color-sidebar-bg:     #1C1917;
+  --color-sidebar-active: #451A03;
+  --color-surface:        #1C1917;
+  --color-surface-alt:    #292524;
+  --color-border:         #292524;
+  --color-border-mid:     #3F3F46;
+  --color-text-primary:   #FAFAF9;
+  --color-text-secondary: #A8A29E;
+  --color-text-muted:     #78716C;
+  --color-gray-700:       #D6D3D1;
+  --color-brand-light:    #451A03;
+  --bg-neutral:           #292524;
+}
+
+[data-density='compact']     { --row-h: 40px; --cell-pad: 14px; --card-pad: 14px; }
+[data-density='comfortable'] { --row-h: 64px; --cell-pad: 24px; --card-pad: 24px; }
+
+/* ============================================================
+   Corner Style — Sharp / Rounded (default) / Soft
+   Overrides both the design-system radius tokens AND the common
+   Tailwind rounded-* utilities so the whole UI responds.
+   `rounded-full` (pills, avatars) is intentionally preserved.
+   ============================================================ */
+[data-radius='sharp'] {
+  --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-xl: 0; --radius-2xl: 0;
+}
+[data-radius='sharp'] .rounded-sm,
+[data-radius='sharp'] .rounded,
+[data-radius='sharp'] .rounded-md,
+[data-radius='sharp'] .rounded-lg,
+[data-radius='sharp'] .rounded-xl,
+[data-radius='sharp'] .rounded-2xl,
+[data-radius='sharp'] .rounded-3xl {
+  border-radius: 0 !important;
+}
+
+[data-radius='soft'] {
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 20px; --radius-2xl: 26px;
+}
+[data-radius='soft'] .rounded-md  { border-radius: 0.75rem  !important; }
+[data-radius='soft'] .rounded-lg  { border-radius: 1rem     !important; }
+[data-radius='soft'] .rounded-xl  { border-radius: 1.25rem  !important; }
+[data-radius='soft'] .rounded-2xl { border-radius: 1.5rem   !important; }
+[data-radius='soft'] .rounded-3xl { border-radius: 1.75rem  !important; }
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* In-app "Larger text" preference — scales the root font so rem-based UI grows.
+     Uses 100% (the browser/user base size) so it composes with the user's own zoom. */
+  html { font-size: calc(100% * var(--font-scale, 1)); }
+  ::selection { background: var(--color-brand-light); }
+
+  /* WCAG 2.2 — always-visible amber focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  /* In-app "Reduce motion" preference — mirrors the OS media query above and also
+     stops the always-on infinite loops (pulse/shimmer) from running. */
+  [data-reduced-motion='true'] *,
+  [data-reduced-motion='true'] *::before,
+  [data-reduced-motion='true'] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Reusable component utilities — shared across every screen
+   ============================================================ */
+@layer components {
+  /* ---- Cards ---- */
+  .ss-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-mid);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xs);
+  }
+  .ss-card-pad { padding: var(--card-pad); }
+  .ss-card-hover { transition: box-shadow .15s ease, transform .15s ease; }
+  .ss-card-hover:hover { box-shadow: var(--shadow-sm); }
+
+  /* ---- KPI / Metric card ---- */
+  .ss-kpi {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: 22px;
+    box-shadow: var(--shadow-xs);
+  }
+  .ss-kpi-label { font-size: 13px; color: var(--color-text-secondary); }
+  .ss-kpi-value {
+    font-size: 40px; font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1; margin-top: 10px; color: var(--color-text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- Segmented control ---- */
+  .ss-seg {
+    display: inline-flex; gap: 3px; background: var(--bg-neutral);
+    padding: 3px; border-radius: var(--radius-lg);
+  }
+  .ss-seg > button {
+    padding: 6px 13px; border-radius: 7px; font-size: 13px; font-weight: 500;
+    color: var(--color-text-secondary); cursor: pointer; border: none;
+    background: transparent; transition: all .12s; white-space: nowrap;
+  }
+  .ss-seg > button.on {
+    background: var(--color-surface); color: var(--color-brand-dark);
+    box-shadow: var(--shadow-xs);
+  }
+
+  /* ---- Pill / chip helpers ---- */
+  .ss-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 13px; border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-mid); background: var(--color-surface);
+    font-size: 13px; font-weight: 500; color: var(--color-gray-700);
+    cursor: pointer; transition: background .12s, border-color .12s;
+  }
+  .ss-pill:hover { background: var(--color-surface-alt); }
+
+  /* ---- Mono code chip (order codes, request_id) ---- */
+  .ss-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ---- Scrollbars ---- */
+.ss-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.ss-scroll::-webkit-scrollbar-thumb { background: var(--color-border-mid); border-radius: 4px; }
+.ss-scroll::-webkit-scrollbar-track { background: transparent; }
+.ss-no-scrollbar::-webkit-scrollbar { width: 0; height: 0; }
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .ss-fade-up { animation: ssFadeUp .28s ease both; }
+  @keyframes ssFadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .ss-pulse-dot { animation: ssPulseDot 1.4s infinite; }
+  @keyframes ssPulseDot {
+    0%   { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); }
+    70%  { box-shadow: 0 0 0 6px rgba(220,38,38,0); }
+    100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+  }
+
+  .ss-shimmer {
+    background: linear-gradient(100deg, #EEF0F2 30%, #F7F8F9 50%, #EEF0F2 70%);
+    background-size: 200% 100%;
+    animation: ssShimmer 1.4s infinite linear;
+  }
+  @keyframes ssShimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+  .ss-scan { animation: ssScan 2s infinite ease-in-out; }
+  @keyframes ssScan { 0%, 100% { top: 8%; } 50% { top: 84%; } }
+}
+.ss-shimmer { background: #EEF0F2; }

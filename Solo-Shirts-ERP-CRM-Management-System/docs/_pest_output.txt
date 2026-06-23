@@ -1,0 +1,631 @@
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                                                                                            1.22s  
+
+   PASS  Tests\Unit\Shared\ApiResponseTest
+  ✓ it builds a success envelope with the standard shape                                                         2.97s  
+  ✓ it builds an error envelope with a stable code and field errors                                              0.05s  
+
+   PASS  Tests\Feature\Alignment\Sprint1EndpointsTest
+  ✓ it deactivates and reactivates a user, toggling is_active                                                   17.41s  
+  ✓ it returns a customer order list                                                                             1.37s  
+  ✓ it returns a customer balance with outstanding equal to the unpaid total                                     1.48s  
+  ✓ it returns a customer timeline feed                                                                          1.25s  
+  ✓ it lists outstanding receivables grouped by customer                                                         1.33s  
+  ✓ it lists documents with signed download URLs                                                                 1.25s  
+  ✓ it finds a customer via global search                                                                        1.28s  
+  ✓ it forbids global search results a role cannot see                                                           1.54s  
+
+   PASS  Tests\Feature\Audit\ActivityLoggedOnCriticalChangesTest
+  ✓ it writes an audit activity row for every critical model on create                                           1.46s  
+
+   PASS  Tests\Feature\Audit\AppendOnlyGrantTest
+  ✓ it forbids UPDATE on every append-only table at the database level                                           1.48s  
+  ✓ it forbids DELETE on the payment ledger at the database level                                                1.10s  
+
+   PASS  Tests\Feature\Audit\AuditEndpointTest
+  ✓ it lists audit activities filtered by subject type for Owner/Admin                                           1.26s  
+  ✓ it returns an item's production transition history                                                           1.64s  
+  ✓ it forbids audit access without the permission                                                               1.08s  
+
+   PASS  Tests\Feature\Customer\BranchIsolationOnCustomersTest
+  ✓ it hides another branch customer from a branch-scoped user (404)                                             1.07s  
+  ✓ it scopes the customer list to the user branch                                                               1.43s  
+  ✓ it lets an Owner read customers across branches                                                              0.98s  
+
+   PASS  Tests\Feature\Customer\CustomerCodeUniqueTest
+  ✓ it generates gap-free, unique, sequential codes for a branch                                                 1.14s  
+
+   PASS  Tests\Feature\Customer\CustomerCreateTest
+  ✓ it creates a customer with a branch-prefixed code, signed QR, encrypted phone and branch_id                  1.23s  
+  ✓ it rejects a duplicate phone in the same branch with 409 DUPLICATE_PHONE                                     1.57s  
+
+   PASS  Tests\Feature\Customer\CustomerSearchTest
+  ✓ it searches by partial name                                                                                  1.31s  
+  ✓ it searches by phone last 4                                                                                  1.15s  
+
+   PASS  Tests\Feature\Customer\FamilyMemberCrudTest
+  ✓ it creates, updates and soft-deletes a family member                                                         1.29s  
+  ✓ it cannot attach a family member to another branch customer                                                  1.27s  
+
+   PASS  Tests\Feature\Customer\PhoneIsEncryptedAtRestTest
+  ✓ it stores the phone as ciphertext while keeping phone_last4 in plaintext                                     1.25s  
+
+   PASS  Tests\Feature\Customer\QrLookupTest
+  ✓ it resolves a customer from a valid signed QR payload                                                        1.50s  
+  ✓ it rejects a tampered QR payload with 422 INVALID_QR_SIGNATURE                                               1.07s  
+  ✓ it forbids scanning a QR from another branch unless Owner                                                   27.96s  
+
+   PASS  Tests\Feature\Cutting\ActualGreaterThanReservedRequiresPermissionTest
+  ✓ it forbids consuming more than reserved without the over-consume permission                                  4.57s  
+  ✓ it allows over-consume for a user holding fabric.over_consume                                                2.02s  
+
+   PASS  Tests\Feature\Cutting\BundleQrSignedTest
+  ✓ it signs the bundle QR payload so a valid scan resolves the bundle                                           1.76s  
+  ✓ it rejects a tampered QR payload (422 INVALID_QR_SIGNATURE)                                                  1.46s  
+  ✓ it shows a bundle by id and forbids users without bundles.view                                               1.19s  
+
+   PASS  Tests\Feature\Cutting\CompleteCuttingConsumesAndCreatesBundlesTest
+  ✓ it consumes fabric, creates QR bundles and advances the item to tailoring                                    1.25s  
+  ✓ it rejects completing cutting when the item has no reservation                                               1.18s  
+  ✓ it requires at least one bundle                                                                              1.24s  
+
+   PASS  Tests\Feature\Cutting\ConcurrentReservationsTest
+  ✓ it lets only one of two reservations claim the last metres                                                   1.00s  
+
+   PASS  Tests\Feature\Cutting\CrossBranchRollRejectedTest
+  ✓ it cannot reserve fabric from another branch roll                                                            0.91s  
+  ✓ it cannot allocate against a cross-branch order item (404)                                                   1.28s  
+
+   PASS  Tests\Feature\Cutting\IdempotentAllocateTest
+  ✓ it replays an allocation for a repeated key without a duplicate reservation or movement                      1.15s  
+  ✓ it requires an Idempotency-Key for allocation                                                                1.44s  
+
+   PASS  Tests\Feature\Cutting\ReleaseRestoresAvailableTest
+  ✓ it releasing a reservation returns the metres to available                                                   1.28s  
+  ✓ it returns 409 when releasing with no active reservation                                                     1.24s  
+
+   PASS  Tests\Feature\Cutting\ReserveReducesAvailableNotRemainingTest
+  ✓ it reserving fabric reduces available but not physical remaining                                             1.32s  
+  ✓ it rejects reserving more than the available stock                                                           1.21s  
+  ✓ it rejects a second allocation for an already-reserved item                                                  1.38s  
+  ✓ it rejects reserving against a written-off roll                                                              1.32s  
+
+   PASS  Tests\Feature\Damage\ApprovalAtomicTest
+  ✓ it does not mark a report approved if the stock ledger write fails                                           1.47s  
+
+   PASS  Tests\Feature\Damage\ApprovalFlowTest
+  ✓ it a non-owner cannot approve a damage report (403)                                                          1.30s  
+  ✓ it approval deducts stock via a single damage_writeoff movement                                              1.11s  
+  ✓ it rejection leaves stock untouched and records the reason                                                   0.92s  
+  ✓ it returns 409 ALREADY_APPROVED when approving an approved report under a new key                            1.52s  
+  ✓ it replays the original response for a repeated Idempotency-Key                                              1.00s  
+  ✓ it refuses to write off more than the roll has (409 INSUFFICIENT_STOCK)                                      1.21s  
+
+   PASS  Tests\Feature\Damage\CreateDamageReportPendingTest
+  ✓ it creates a pending damage report without touching stock                                                    1.52s  
+  ✓ it requires damage_type_other when damage_type is other (422)                                                1.09s  
+  ✓ it forbids reporting without the create permission                                                           1.17s  
+
+   PASS  Tests\Feature\Damage\DamagePhotoTest
+  ✓ it uploads a damage photo to s3 and queues a thumbnail                                                       1.41s  
+  ✓ it rejects an oversize photo (413)                                                                           1.32s  
+  ✓ it links uploaded photos to the report and exposes them via signed URL                                       1.04s  
+
+   PASS  Tests\Feature\Delivery\AttemptRecordedWithReasonTest
+  ✓ it records a failed attempt with a structured reason code and flips status to attempted                      1.19s  
+  ✓ it rejects an unknown reason code with 422                                                                   1.20s  
+
+   PASS  Tests\Feature\Delivery\ConfirmTwiceIdempotentTest
+  ✓ it replays the prior result for a repeated confirm with the same Idempotency-Key                             1.27s  
+
+   PASS  Tests\Feature\Delivery\ConfirmWithCorrectOtpTransitionsItemsTest
+  ✓ it confirms with the correct OTP, delivers the items and frees their rack slots                              1.08s  
+  ✓ it rejects confirmation before dispatch with 409 NOT_DISPATCHED                                              1.15s  
+  ✓ it rejects confirmation on a cancelled delivery with 409 DELIVERY_CANCELLED                                  0.92s  
+
+   PASS  Tests\Feature\Delivery\CourierModeRecordsTrackingTest
+  ✓ it creates a courier delivery and persists the partner and tracking number                                   1.12s  
+  ✓ it requires a courier partner when mode is courier                                                           1.06s  
+
+   PASS  Tests\Feature\Delivery\DispatchGeneratesOtpTest
+  ✓ it stores only the OTP hash and never the raw code                                                           1.13s  
+  ✓ it transmits the raw OTP over the notification channel exactly once                                          1.29s  
+
+   PASS  Tests\Feature\Delivery\ExpiredOtpRejectedTest
+  ✓ it rejects an OTP used after its expiry window (422 OTP_EXPIRED)                                             1.09s  
+
+   FAIL  Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest
+  ⨯ it increments attempts on each wrong OTP and locks after the fifth (423)                                     1.29s  
+  ⨯ it stays locked until a re-dispatch issues a fresh code                                                      1.48s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful response                                                                0.04s  
+
+   PASS  Tests\Feature\Finance\BalanceComputationTest
+  ✓ it computes outstanding as invoice total minus payments minus credit notes                                   0.93s  
+  ✓ it exposes the order outstanding balance over the API                                                        0.99s  
+
+   PASS  Tests\Feature\Finance\CreditNoteCreatesCreditNoTest
+  ✓ it numbers credit notes gap-free per (branch, fiscal year)                                                   1.45s  
+  ✓ it rejects a credit note that exceeds the invoice total                                                      1.02s  
+
+   PASS  Tests\Feature\Finance\FiscalYearRolloverResetsCounterTest
+  ✓ it restarts the counter at 1 for a new fiscal year (Apr 1 IST)                                               1.09s  
+
+   PASS  Tests\Feature\Finance\GapFreeNumberingUnderConcurrencyTest
+  ✓ it issues a gap-free, monotonic sequence with no duplicates                                                  1.37s  
+
+   PASS  Tests\Feature\Finance\GstCalculationTest
+  ✓ it splits regular GST into CGST+SGST for an intra-state supply                                               0.02s  
+  ✓ it charges a single IGST for an inter-state supply                                                           0.01s  
+  ✓ it charges no GST for a composition dealer                                                                   0.02s  
+  ✓ it puts the odd paise on SGST when the tax does not split evenly                                             0.02s  
+
+   PASS  Tests\Feature\Finance\InvoiceGenerationTest
+  ✓ it generates an invoice from an order with GST and delivery charges in the total                             1.38s  
+  ✓ it refuses to invoice a fully cancelled order with 409 ORDER_CANCELLED                                       1.23s  
+
+   PASS  Tests\Feature\Finance\InvoiceImmutableTest
+  ✓ it rejects any change to an issued invoice number at the database level                                      0.94s  
+  ✓ it rejects any change to the invoice total at the database level                                             0.91s  
+  ✓ it still allows status updates so the payment reconciler can work                                            1.03s  
+
+   PASS  Tests\Feature\Finance\PaymentIdempotentTest
+  ✓ it returns the prior payment for a repeated Idempotency-Key                                                  1.16s  
+  ✓ it requires an Idempotency-Key header                                                                        1.10s  
+  ✓ it rejects a payment that exceeds the outstanding balance                                                    1.12s  
+
+   PASS  Tests\Feature\Finance\RbacFinanceForbiddenForOthersTest
+  ✓ it forbids a non-finance role from listing invoices                                                          1.36s  
+  ✓ it forbids a non-finance role from recording a payment                                                       1.46s  
+  ✓ it forbids a non-finance role from viewing the dashboard                                                     1.02s  
+  ✓ it allows an accountant through                                                                              0.97s  
+
+   PASS  Tests\Feature\Finance\UpiIdEncryptedAtRestTest
+  ✓ it stores the UPI ID encrypted at rest but decrypts it through the model                                     1.12s  
+
+   PASS  Tests\Feature\Identity\BranchCrudTest
+  ✓ it lets an Owner create, list and update branches                                                            1.40s  
+  ✓ it forbids non-owners from creating branches                                                                 1.35s  
+
+   PASS  Tests\Feature\Identity\BranchIsolationTest
+  ✓ it hides other-branch users from a branch-scoped admin list                                                  1.13s  
+  ✓ it forbids reading a user from another branch (403)                                                          0.94s  
+  ✓ it forbids updating a user from another branch (403)                                                         0.95s  
+  ✓ it lets an Owner see users across all branches                                                               1.17s  
+
+   PASS  Tests\Feature\Identity\LoginTest
+  ✓ it logs in with valid credentials and returns a token + abilities                                            0.85s  
+  ✓ it blocks a privileged role that has not enrolled in 2FA when enforcement is on                              0.96s  
+  ✓ it still lets a non-privileged role log in without 2FA under enforcement                                     1.21s  
+  ✓ it rejects a wrong password with 401 INVALID_CREDENTIALS                                                     0.96s  
+  ✓ it refuses inactive users                                                                                    1.12s  
+  ✓ it locks out after 5 failed attempts (per email + ip)                                                        1.75s  
+  ✓ it requires a valid OTP for an Accountant with 2FA enabled                                                   1.10s  
+  ✓ it records every login attempt (success and failure) in login_attempts                                       1.76s  
+
+   PASS  Tests\Feature\Identity\RoleAssignmentRevokesTokensTest
+  ✓ it revokes all existing tokens when a user is assigned a new role                                            1.03s  
+
+   PASS  Tests\Feature\Identity\SwitchBranchTest
+  ✓ it lets an Owner switch branch context so reads scope to the new branch                                      1.55s  
+  ✓ it forbids staff from switching branch                                                                       1.47s  
+
+   PASS  Tests\Feature\Identity\TokenExpiryTest
+  ✓ it rejects a token older than the 24h expiry window                                                          2.57s  
+
+   PASS  Tests\Feature\Identity\TwoFactorFlowTest
+  ✓ it enables and confirms 2FA, after which the next login requires an OTP                                      1.25s  
+  ✓ it requires both current password and OTP to disable 2FA                                                     1.41s  
+
+   PASS  Tests\Feature\Inventory\AdjustOutRequiresApprovalTest
+  ✓ it forbids adjust_out without the approval permission (403)                                                  1.92s  
+  ✓ it allows adjust_out for an approver and deducts stock                                                       0.99s  
+  ✓ it requires a reason of at least 10 chars for adjust_out (422)                                               0.94s  
+  ✓ it lets a manager adjust stock in without approval                                                           0.93s  
+
+   PASS  Tests\Feature\Inventory\AppendOnlyMovementsTest
+  ✓ it rejects any UPDATE against fabric_movements at the database level                                         0.06s  
+
+   PASS  Tests\Feature\Inventory\AvailableEqualsRemainingMinusReservesTest
+  ✓ it available = remaining − net active reserves; reserving never touches remaining                            0.08s  
+
+   PASS  Tests\Feature\Inventory\CheckConstraintNegativeBlockedTest
+  ✓ it forbids remaining_metres going negative at the database level                                             0.05s  
+  ✓ it the ledger refuses to deduct more than remaining (INSUFFICIENT_STOCK)                                     0.07s  
+
+   PASS  Tests\Feature\Inventory\ConcurrentMovementsTest
+  ✓ it keeps cache and ledger coherent across 10 movements                                                       0.12s  
+
+   PASS  Tests\Feature\Inventory\LowStockAlertFiresAtThresholdTest
+  ✓ it fires a low-stock alert when a fabric type is below its threshold                                         0.88s  
+  ✓ it does not fire when stock is at or above the threshold                                                     0.93s  
+  ✓ it exposes low stock via the API, branch-scoped                                                              1.07s  
+
+   PASS  Tests\Feature\Inventory\ReceiveCreatesRollAndMovementTest
+  ✓ it receiving a placed PO creates a roll, a receive movement and a GRN                                        1.04s  
+  ✓ it cannot receive a PO that has not been placed (409)                                                        0.93s  
+
+   PASS  Tests\Feature\Inventory\ReconciliationDetectsDriftTest
+  ✓ it flags a roll whose cached remaining drifts from the ledger                                                0.07s  
+  ✓ it reports no drift when cache and ledger agree                                                              0.10s  
+
+   PASS  Tests\Feature\Measurement\BranchIsolationOnMeasurementsTest
+  ✓ it hides another branch measurement profile and version                                                      1.24s  
+
+   PASS  Tests\Feature\Measurement\CreateProfileTest
+  ✓ it creates a profile whose first version is auto-approved (no prior to diff)                                 0.98s  
+
+   PASS  Tests\Feature\Measurement\RejectionTest
+  ✓ it requires a reason to reject                                                                               0.94s  
+  ✓ it rejecting a version keeps it non-effective and leaves the prior effective                                 1.02s  
+  ✓ it forbids rejecting an already-approved version (409)                                                       1.07s  
+
+   PASS  Tests\Feature\Measurement\VersionAppendOnlyTest
+  ✓ it forbids mutating the measurement data of a persisted version                                              1.10s  
+  ✓ it allows updating approval lifecycle fields (status/effective_to) without error                             1.25s  
+
+   PASS  Tests\Feature\Measurement\VersionUsableForOrderTest
+  ✓ it accepts an approved measurement version                                                                   0.16s  
+  ✓ it rejects a pending measurement version                                                                     0.07s  
+  ✓ it rejects a rejected measurement version                                                                    0.07s  
+  ✓ it rejects a non-existent version                                                                            0.04s  
+
+   PASS  Tests\Feature\Measurement\VersioningTest
+  ✓ it flags a significant change as pending_approval and raises an alert                                        0.97s  
+  ✓ it auto-approves a change below the threshold                                                                1.08s  
+  ✓ it produces sequential gap-free version numbers                                                              1.32s  
+  ✓ it approving v2 closes the prior version effective_to window                                                 1.25s  
+  ✓ it rejects an approval on an already-approved version with 409 ALREADY_APPROVED                              1.04s  
+
+   PASS  Tests\Feature\Order\CreateOrderTest
+  ✓ it creates an order with items, a generated code and draft item state                                        0.99s  
+  ✓ it rejects an order with zero items (422 ORDER_REQUIRES_ITEM)                                                1.10s  
+  ✓ it rejects an order referencing a soft-deleted customer (422 INVALID_CUSTOMER)                               0.96s  
+  ✓ it generates gap-free sequential order codes per branch                                                      1.59s  
+
+   PASS  Tests\Feature\Order\IdempotentCreateOrderTest
+  ✓ it returns the same order for a repeated Idempotency-Key + body                                              0.99s  
+  ✓ it returns 409 IDEMPOTENCY_CONFLICT for the same key but a different body                                    1.67s  
+  ✓ it requires an Idempotency-Key header                                                                        1.02s  
+
+   PASS  Tests\Feature\Order\MeasurementValidationTest
+  ✓ it rejects an order that references a pending (non-approved) measurement version                             1.19s  
+  ✓ it rejects an order that references a measurement version from another branch                                1.24s  
+
+   PASS  Tests\Feature\Order\OrderLifecycleTest
+  ✓ it derives order status from item states                                                                     1.27s  
+  ✓ it forbids editing an item once fabric is allocated (409 INVALID_STATE_FOR_EDIT)                             1.13s  
+  ✓ it cancels an order while items are before cutting                                                           1.31s  
+  ✓ it forbids cancelling an order once an item has passed into production (409)                                 1.14s  
+  ✓ it derives order status ready only after the order exists                                                    1.07s  
+
+   PASS  Tests\Feature\Printing\AllPdfKindsRenderTest
+  ✓ it renders every PDF kind under fixtures                                                                     6.94s  
+
+   PASS  Tests\Feature\Printing\ContentHashDedupesTest
+  ✓ it reuses the same document when identical input is re-rendered                                              1.53s  
+
+   PASS  Tests\Feature\Printing\JobCardRenderTest
+  ✓ it renders a job card PDF, files a document row, and serves it over a signed URL                             1.33s  
+
+   PASS  Tests\Feature\Printing\LargeInvoiceQueuedTest
+  ✓ it queues a heavy invoice (>50 lines) instead of rendering inline                                            1.36s  
+  ✓ it renders a small invoice synchronously                                                                     1.15s  
+  ✓ it renders the queued invoice and notifies on completion when the job runs                                   1.46s  
+
+   PASS  Tests\Feature\Printing\QrSignAndDecodeRoundtripTest
+  ✓ it signs a payload and decodes it back to the same type and id                                               3.57s  
+  ✓ it rejects a tampered payload with 422 INVALID_QR                                                            1.12s  
+  ✓ it forbids signing without the qr.sign permission                                                            1.24s  
+
+   PASS  Tests\Feature\Printing\SignedUrlExpiresTest
+  ✓ it rejects a download once the signed URL has expired and when unsigned                                      1.15s  
+
+   PASS  Tests\Feature\Production\AppendOnlyTransitionsTest
+  ✓ it rejects any UPDATE against production_transitions at the database level                                   0.96s  
+
+   PASS  Tests\Feature\Production\ConcurrentTransitionsTest
+  ✓ it lets one of two competing transitions win and rejects the other (409)                                     0.93s  
+
+   PASS  Tests\Feature\Production\IdempotencyOnTransitionTest
+  ✓ it requires an Idempotency-Key header                                                                        1.03s  
+  ✓ it replays the original response for a repeated key without inserting a second row                           1.08s  
+  ✓ it rejects re-entering the current state under a fresh key (409)                                             1.52s  
+
+   PASS  Tests\Feature\Production\InvalidTransitionRejectedTest
+  ✓ it rejects a skip-ahead transition (draft → delivered) with 409                                              1.12s  
+  ✓ it rejects a backwards transition (tailoring → cutting) with 409                                             1.11s  
+  ✓ it treats delivered as terminal                                                                              0.93s  
+  ✓ it treats cancelled as terminal                                                                              1.35s  
+  ✓ it rejects an unknown target state at validation (422)                                                       1.14s  
+
+   PASS  Tests\Feature\Production\KanbanBoardScopedToBranchTest
+  ✓ it groups items by state and only shows the active branch                                                    1.27s  
+  ✓ it exposes every workflow state as a column even when empty                                                  0.97s  
+
+   PASS  Tests\Feature\Production\ProductionHistoryTest
+  ✓ it returns an item history in occurred_at order                                                              1.02s  
+  ✓ it returns the current state on the item detail endpoint                                                     0.97s  
+  ✓ it forbids viewing production without the production.view permission                                         1.19s  
+
+   PASS  Tests\Feature\Production\ReworkLoopBoundedTest
+  ✓ it blocks a 4th rework without the override permission                                                       1.16s  
+  ✓ it allows the override holder (QC Supervisor) to exceed the rework limit                                     1.15s  
+
+   PASS  Tests\Feature\Production\TransitionAuthorizationTest
+  ✓ it lets a Cutting Master begin cutting                                                                       1.41s  
+  ✓ it forbids a role from a transition it does not own (403)                                                    1.08s  
+  ✓ it forbids cross-branch transitions (item 404s under branch scope)                                           0.96s  
+
+   PASS  Tests\Feature\Production\TransitionEmitsEventTest
+  ✓ it dispatches OrderItemStateChanged exactly once per successful transition                                   0.97s  
+  ✓ it does not dispatch the event when a transition is rejected                                                 1.15s  
+  ✓ it writes an audit log entry via the registered listener                                                     1.04s  
+
+   PASS  Tests\Feature\Production\ValidTransitionsTest
+  ✓ it allows every defined edge of the production state machine with dataset "draft → fabric_allocated"         1.25s  
+  ✓ it allows every defined edge of the production state machine with dataset "fabric_allocated → cutting"       1.23s  
+  ✓ it allows every defined edge of the production state machine with dataset "cutting → tailoring"              0.81s  
+  ✓ it allows every defined edge of the production state machine with dataset "tailoring → kaja_button"          1.37s  
+  ✓ it allows every defined edge of the production state machine with dataset "kaja_button → finishing"          2.37s  
+  ✓ it allows every defined edge of the production state machine with dataset "finishing → qc"                   1.83s  
+  ✓ it allows every defined edge of the production state machine with dataset "qc → packing"                     1.26s  
+  ✓ it allows every defined edge of the production state machine with dataset "packing → ready_for_delivery"     1.16s  
+  ✓ it allows every defined edge of the production state machine with dataset "ready_for_delivery → delivered"   1.28s  
+  ✓ it allows every defined edge of the production state machine with dataset "qc → rework"                      1.64s  
+  ✓ it allows every defined edge of the production state machine with dataset "rework → qc"                      1.15s  
+  ✓ it allows every defined edge of the production state machine with dataset "draft → cancelled"                1.35s  
+  ✓ it allows every defined edge of the production state machine with dataset "fabric_allocated → cancelled"     1.17s  
+  ✓ it allows every defined edge of the production state machine with dataset "cutting → cancelled"              1.29s  
+  ✓ it records the actor, from, to and occurred_at on each transition                                            1.27s  
+  ✓ it marks cancelled_at and reason when an item is cancelled                                                   1.22s  
+  ✓ it exposes the allowed next states on the item resource                                                      0.92s  
+
+   PASS  Tests\Feature\Qc\DefectAnalyticsQueryTest
+  ✓ it returns the top defect categories over the last 30 days, branch-scoped                                    1.12s  
+  ✓ it forbids analytics without QC permission                                                                   1.69s  
+
+   PASS  Tests\Feature\Qc\DefectPhotoUploadTest
+  ✓ it rejects a non-image upload (422)                                                                          0.98s  
+  ✓ it rejects an oversize image (413 PAYLOAD_TOO_LARGE)                                                         1.25s  
+  ✓ it stores a valid image on s3 and queues a thumbnail                                                         1.18s  
+
+   PASS  Tests\Feature\Qc\InspectionPassTransitionsToPackingTest
+  ✓ it a passing inspection transitions the item to packing                                                      1.04s  
+  ✓ it a reject routes the item to cancelled with a refund flag and requires a reason                            1.05s  
+  ✓ it rejects inspecting an item that is not in QC (409)                                                        1.21s  
+
+   PASS  Tests\Feature\Qc\ReworkFlowTest
+  ✓ it a rework disposition sends the item back to rework and stores defects                                     1.25s  
+  ✓ it blocks a 4th rework without the override permission (403 REWORK_LIMIT)                                    1.39s  
+  ✓ it allows a 4th rework via the override endpoint for a permitted user                                        1.16s  
+  ✓ it forbids the override endpoint without the override permission                                             1.04s  
+
+   PASS  Tests\Feature\Qc\SignedUrlForPhotoTest
+  ✓ it exposes defect photos via a temporary signed URL, never the raw path                                      1.02s  
+  ✓ it refuses an unsigned download (403)                                                                        0.89s  
+
+   PASS  Tests\Feature\Rack\AssignReleaseHappyPathTest
+  ✓ it assigns an item to a slot then releases it                                                                1.24s  
+  ✓ it auto-picks the first available slot when no code is given                                                 1.07s  
+  ✓ it returns 409 NO_SLOT_AVAILABLE when the rack is full                                                       1.19s  
+
+   PASS  Tests\Feature\Rack\AutoAssignOnReadyForDeliveryTest
+  ✓ it auto-assigns the first available slot when an item becomes ready for delivery                             1.15s  
+  ✓ it does not fail the transition when the rack is full                                                        1.40s  
+
+   PASS  Tests\Feature\Rack\DuplicateSlotAssignmentRejectedAtDbTest
+  ✓ it rejects a second assignment to an occupied slot (409 RACK_SLOT_OCCUPIED)                                  0.90s  
+  ✓ it enforces one active assignment per slot at the database level                                             1.26s  
+
+   PASS  Tests\Feature\Rack\OneItemOneActiveSlotTest
+  ✓ it rejects assigning a second slot to an already-assigned item (409)                                         1.01s  
+  ✓ it enforces one active assignment per item at the database level                                             0.97s  
+
+   PASS  Tests\Feature\Rack\ReleaseOnDeliveredTest
+  ✓ it releases the rack slot when the item is delivered                                                         1.17s  
+
+   PASS  Tests\Feature\Reporting\DashboardReadsRollupsTest
+  ✓ it serves the dashboard purely from the rollup table, never OLTP joins                                       0.77s  
+
+   PASS  Tests\Feature\Reporting\NotificationSentIdempotentTest
+  ✓ it sends a referenced notification only once under deduplication                                             1.03s  
+
+   PASS  Tests\Feature\Reporting\ReportFailedRecordsErrorTest
+  ✓ it records the error and marks the job failed when the report cannot run                                     0.94s  
+
+   PASS  Tests\Feature\Reporting\ReportJobLifecycleTest
+  ✓ it records a pending job and queues the work                                                                 0.89s  
+  ✓ it runs to succeeded and attaches a document                                                                 1.25s  
+  ✓ it drives the full lifecycle via the queued job                                                              0.88s  
+
+   PASS  Tests\Feature\Reporting\ScheduledJobsRegisteredTest
+  ✓ it registers all expected scheduled jobs                                                                     0.56s  
+
+   PASS  Tests\Feature\Reporting\WhatsappRateLimitedTest
+  ✓ it keeps a rate-limited WhatsApp message queued for retry rather than losing it                              0.96s  
+
+   PASS  Tests\Feature\Security\BackupRestoreDrillTest
+  ✓ it passes the restore drill when core invariants hold                                                        1.42s  
+  ✓ it fails the restore drill when the database looks empty or incomplete                                       1.16s  
+
+   PASS  Tests\Feature\Security\HealthEndpointDeepCheckTest
+  ✓ it reports a deep health check of downstream dependencies                                                    0.06s  
+
+   PASS  Tests\Feature\Security\SecurityHeadersPresentTest
+  ✓ it emits the documented security headers on every API response                                               0.02s  
+  ✓ it emits security headers even on error responses                                                            1.16s  
+
+   PASS  Tests\Feature\Shared\DomainExceptionHandlerTest
+  ✓ it renders a domain exception as the standard error envelope with its code and status                        0.02s  
+
+   PASS  Tests\Feature\Shared\HealthCheckTest
+  ✓ it returns 200 with the standard envelope when all dependencies are up                                       0.02s  
+  ✓ it returns 503 with code HEALTH_DEPENDENCY_DOWN when the DB ping fails                                       0.02s  
+  ✓ it returns 503 when the Redis ping fails                                                                     0.02s  
+  ✓ it throttles to 60 requests per minute (61st returns 429)                                                    0.19s  
+  ✓ it never 500s when a real dependency is unreachable (returns structured 503)                                 2.67s  
+  ✓ it echoes the request id in both the X-Request-Id header and the JSON body                                   0.02s  
+
+   PASS  Tests\Feature\Shared\IdempotencyTest
+  ✓ it replays the original response for the same key and same body                                              0.09s  
+  ✓ it returns 409 IDEMPOTENCY_CONFLICT for the same key but a different body                                    0.05s  
+  ✓ it returns 400 IDEMPOTENCY_KEY_REQUIRED when the header is missing on a whitelisted route                    0.04s  
+  ✓ it scopes idempotency keys per user (same key, different users do not collide)                               0.06s  
+
+   PASS  Tests\Feature\Shared\ValidationErrorEnvelopeTest
+  ✓ it returns a 422 standard envelope with code VALIDATION_FAILED on invalid input                              0.02s  
+  ✓ it passes validation when input is valid                                                                     0.02s  
+
+   PASS  Tests\Feature\Tailoring\AssignmentHappyPathTest
+  ✓ it assigns, starts and completes a bundle, advancing the item to kaja_button                                 0.91s  
+  ✓ it forbids a tailor starting another tailor's assignment                                                     0.88s  
+  ✓ it rejects completing an assignment whose item is cancelled (409)                                            0.90s  
+
+   PASS  Tests\Feature\Tailoring\CannotReassignAfterStartTest
+  ✓ it reassigns an unstarted assignment to another tailor                                                       1.25s  
+  ✓ it cannot reassign once the assignment has started (409)                                                     1.05s  
+  ✓ it records an audit entry on reassign                                                                        0.92s  
+
+   PASS  Tests\Feature\Tailoring\CrossBranchAssignmentRejectedTest
+  ✓ it cannot assign a bundle that belongs to another branch                                                     1.17s  
+  ✓ it cannot assign to a tailor from another branch                                                             1.19s  
+  ✓ it cannot assign to an inactive tailor                                                                       1.00s  
+
+   PASS  Tests\Feature\Tailoring\DuplicateActiveAssignmentRejectedTest
+  ✓ it rejects a second active assignment on the same bundle (partial unique)                                    1.43s  
+  ✓ it allows a new assignment after the previous one is reassigned away                                         1.16s  
+
+   PASS  Tests\Feature\Tailoring\PerformanceMetricsCorrectTest
+  ✓ it computes bundles, pieces, average minutes per piece and on-time %                                         0.94s  
+  ✓ it excludes another branch's assignments from the figures                                                    1.25s  
+  ✓ it forbids viewing performance without the permission                                                        1.06s  
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest > it increments attempts on each wrong OTP and lock…   
+  Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'OTP_INVALID'
++'OTP_EXPIRED'
+
+  at tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest.php:28
+     24▕     // 'WRONG1' can never equal a 6-digit numeric OTP.
+     25▕     for ($i = 1; $i <= OtpService::MAX_ATTEMPTS - 1; $i++) {
+     26▕         confirmDelivery($this, $this->staff, $delivery->id, 'WRONG1')
+     27▕             ->assertStatus(422)
+  ➜  28▕             ->assertJsonPath('code', 'OTP_INVALID');
+     29▕ 
+     30▕         /** @var DeliveryOtp $otp */
+     31▕         $otp = DeliveryOtp::query()->where('delivery_id', $delivery->id)->sole();
+     32▕         expect($otp->attempts)->toBe($i);
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest > it stays locked until a re-dispatch issues a fres…   
+  Expected response status code [423] but received 422.
+Failed asserting that 422 is identical to 423.
+
+The following exception occurred during the last request:
+
+App\Modules\Delivery\Exceptions\DeliveryException: The confirmation code has expired; re-dispatch to issue a new one. in E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Delivery\Exceptions\DeliveryException.php:45
+Stack trace:
+#0 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Delivery\Services\OtpService.php(70): App\Modules\Delivery\Exceptions\DeliveryException::expiredOtp()
+#1 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Delivery\Services\DeliveryService.php(113): App\Modules\Delivery\Services\OtpService->verify(Object(App\Modules\Delivery\Models\Delivery), '237325')
+#2 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Delivery\Http\Controllers\Api\V1\DeliveryConfirmationController.php(26): App\Modules\Delivery\Services\DeliveryService->confirm(Object(App\Modules\Delivery\Models\Delivery), '237325', Object(App\Models\User))
+#3 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(46): App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryConfirmationController->confirm(Object(App\Modules\Delivery\Http\Requests\ConfirmDeliveryRequest), Object(App\Modules\Delivery\Models\Delivery))
+#4 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Route.php(265): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryConfirmationController), 'confirm')
+#5 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Route.php(211): Illuminate\Routing\Route->runController()
+#6 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Router.php(822): Illuminate\Routing\Route->run()
+#7 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#8 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Shared\Http\Middleware\IdempotencyMiddleware.php(50): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#9 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Shared\Services\IdempotencyService.php(87): App\Modules\Shared\Http\Middleware\IdempotencyMiddleware->App\Modules\Shared\Http\Middleware\{closure}()
+#10 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Shared\Http\Middleware\IdempotencyMiddleware.php(49): App\Modules\Shared\Services\IdempotencyService->rememberOrExecute('1d504a87-5158-4...', Object(Closure))
+#11 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): App\Modules\Shared\Http\Middleware\IdempotencyMiddleware->handle(Object(Illuminate\Http\Request), Object(Closure))
+#12 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Identity\Http\Middleware\ResolveBranchContext.php(42): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): App\Modules\Identity\Http\Middleware\ResolveBranchContext->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Shared\Http\Middleware\SecurityHeaders.php(31): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): App\Modules\Shared\Http\Middleware\SecurityHeaders->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(50): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#17 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#18 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Auth\Middleware\Authenticate.php(63): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#19 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Auth\Middleware\Authenticate->handle(Object(Illuminate\Http\Request), Object(Closure), 'sanctum')
+#20 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Shared\Http\Middleware\ForceJsonResponse.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): App\Modules\Shared\Http\Middleware\ForceJsonResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\app\Modules\Shared\Http\Middleware\AssignRequestId.php(32): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): App\Modules\Shared\Http\Middleware\AssignRequestId->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Router.php(821): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#26 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#27 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#28 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#29 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#30 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#31 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#34 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#35 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#39 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#40 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#41 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#42 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#43 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#44 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#45 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#46 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#48 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#50 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#51 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#52 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#53 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/v1/deliver...', Array, Array, Array, Array, '{"otp":"237325"...')
+#54 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/v1/deliver...', Array, Array, 0)
+#55 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\tests\Pest.php(299): Illuminate\Foundation\Testing\TestCase->postJson('/api/v1/deliver...', Array)
+#56 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest.php(52): confirmDelivery(Object(P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest), Object(App\Models\User), 13, '237325')
+#57 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\src\Factories\TestCaseMethodFactory.php(171): P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest->{closure}()
+#58 [internal function]: P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest->Pest\Factories\{closure}()
+#59 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\src\Concerns\Testable.php(419): call_user_func_array(Object(Closure), Array)
+#60 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\src\Support\ExceptionTrace.php(26): P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest->Pest\Concerns\{closure}()
+#61 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\src\Concerns\Testable.php(419): Pest\Support\ExceptionTrace::ensure(Object(Closure))
+#62 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\src\Concerns\Testable.php(321): P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest->__callClosure(Object(Closure), Array)
+#63 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\src\Factories\TestCaseFactory.php(170) : eval()'d code(26): P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest->__runTest(Object(Closure))
+#64 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest->__pest_evaluable_it_stays_locked_until_a_re_dispatch_issues_a_fresh_code()
+#65 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#66 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#67 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(P\Tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest))
+#68 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#69 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#70 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#71 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#72 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#73 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\src\Kernel.php(103): PHPUnit\TextUI\Application->run(Array)
+#74 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\bin\pest(184): Pest\Kernel->handle(Array, Array)
+#75 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\pestphp\pest\bin\pest(192): {closure}()
+#76 E:\Projects\Solo-Shirts-ERP-CRM-Management-System\vendor\bin\pest(119): include('E:\\Projects\\Sol...')
+#77 {main}
+
+----------------------------------------------------------------------------------
+
+The confirmation code has expired; re-dispatch to issue a new one.
+
+  at tests\Feature\Delivery\WrongOtpIncrementsAttemptsTest.php:53
+     49▕     }
+     50▕ 
+     51▕     // Even a correct guess is refused while locked — a new dispatch is required.
+     52▕     confirmDelivery($this, $this->staff, $delivery->id, (string) $fake->lastOtp())
+  ➜  53▕         ->assertStatus(423)
+     54▕         ->assertJsonPath('code', 'OTP_LOCKED');
+     55▕ 
+     56▕     // Re-dispatch issues a fresh OTP; the new code confirms.
+     57▕     dispatchDelivery($this, $this->staff, $delivery->id)->assertOk();
+
+
+  Tests:    2 failed, 278 passed (1081 assertions)
+  Duration: 367.92s
+

@@ -1,0 +1,216 @@
+
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37m/[39m[38;5;103m ................................................................................. routes/web.php:7[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/_smoke/domain-exception[39m[38;5;103m App\Modules\Shared\Http\Controllers\Api\V1\SmokeController@domainErr…[39m
+  [33mPOST[39m            [37mapi/v1/_smoke/idempotent[39m[38;5;103m .......... App\Modules\Shared\Http\Controllers\Api\V1\SmokeController@store[39m
+  [33mPOST[39m            [37mapi/v1/_smoke/validate[39m[38;5;103m .... App\Modules\Shared\Http\Controllers\Api\V1\SmokeController@validateInput[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/alterations[39m[38;5;103m ............ App\Modules\Order\Http\Controllers\Api\V1\AlterationController@index[39m
+  [33mPOST[39m            [37mapi/v1/alterations[39m[38;5;103m ............ App\Modules\Order\Http\Controllers\Api\V1\AlterationController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/alterations/[39m[33m{alteration}[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\AlterationController@show[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/alterations/[39m[33m{alteration}[39m[37m/photo[39m[38;5;103m alterations.photo › App\Modules\Order\Http\Controllers\Api\V1…[39m
+  [33mPATCH[39m           [37mapi/v1/alterations/[39m[33m{alteration}[39m[37m/status[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\AlterationControll…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/audit/activities[39m[38;5;103m ...... App\Modules\Shared\Http\Controllers\Api\V1\AuditController@activities[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/audit/transitions/[39m[33m{item}[39m[38;5;103m App\Modules\Shared\Http\Controllers\Api\V1\AuditController@transiti…[39m
+  [33mPOST[39m            [37mapi/v1/auth/2fa/confirm[39m[38;5;103m ... App\Modules\Identity\Http\Controllers\Api\V1\TwoFactorController@confirm[39m
+  [33mPOST[39m            [37mapi/v1/auth/2fa/disable[39m[38;5;103m ... App\Modules\Identity\Http\Controllers\Api\V1\TwoFactorController@disable[39m
+  [33mPOST[39m            [37mapi/v1/auth/2fa/enable[39m[38;5;103m ..... App\Modules\Identity\Http\Controllers\Api\V1\TwoFactorController@enable[39m
+  [33mPOST[39m            [37mapi/v1/auth/login[39m[38;5;103m ................ App\Modules\Identity\Http\Controllers\Api\V1\AuthController@login[39m
+  [33mPOST[39m            [37mapi/v1/auth/logout[39m[38;5;103m .............. App\Modules\Identity\Http\Controllers\Api\V1\AuthController@logout[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/auth/me[39m[38;5;103m ...................... App\Modules\Identity\Http\Controllers\Api\V1\AuthController@me[39m
+  [33mPOST[39m            [37mapi/v1/auth/refresh[39m[38;5;103m ............ App\Modules\Identity\Http\Controllers\Api\V1\AuthController@refresh[39m
+  [33mPOST[39m            [37mapi/v1/auth/switch-branch[39m[38;5;103m . App\Modules\Identity\Http\Controllers\Api\V1\AuthController@switchBranch[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/branches[39m[38;5;103m ................ App\Modules\Identity\Http\Controllers\Api\V1\BranchController@index[39m
+  [33mPOST[39m            [37mapi/v1/branches[39m[38;5;103m ................ App\Modules\Identity\Http\Controllers\Api\V1\BranchController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/branches/active-list[39m[38;5;103m App\Modules\Identity\Http\Controllers\Api\V1\BranchController@activeList[39m
+  [33mPUT[39m             [37mapi/v1/branches/[39m[33m{branch}[39m[38;5;103m ...... App\Modules\Identity\Http\Controllers\Api\V1\BranchController@update[39m
+  [33mPOST[39m            [37mapi/v1/branches/[39m[33m{branch}[39m[37m/activate[39m[38;5;103m App\Modules\Identity\Http\Controllers\Api\V1\BranchController@act…[39m
+  [33mPOST[39m            [37mapi/v1/branches/[39m[33m{branch}[39m[37m/deactivate[39m[38;5;103m App\Modules\Identity\Http\Controllers\Api\V1\BranchController@d…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/cloth-damage[39m[38;5;103m ..... App\Modules\Inventory\Http\Controllers\Api\V1\DamageReportController@index[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers[39m[38;5;103m ............. App\Modules\Customer\Http\Controllers\Api\V1\CustomerController@index[39m
+  [33mPOST[39m            [37mapi/v1/customers[39m[38;5;103m ............. App\Modules\Customer\Http\Controllers\Api\V1\CustomerController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers/[39m[33m{customer}[39m[38;5;103m ... App\Modules\Customer\Http\Controllers\Api\V1\CustomerController@show[39m
+  [33mPUT[39m             [37mapi/v1/customers/[39m[33m{customer}[39m[38;5;103m . App\Modules\Customer\Http\Controllers\Api\V1\CustomerController@update[39m
+  [31mDELETE[39m          [37mapi/v1/customers/[39m[33m{customer}[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api\V1\CustomerController@destroy[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers/[39m[33m{customer}[39m[37m/balance[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api\V1\CustomerController…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers/[39m[33m{customer}[39m[37m/documents[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api\V1\CustomerControll…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers/[39m[33m{customer}[39m[37m/family-members[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api\V1\FamilyMembe…[39m
+  [33mPOST[39m            [37mapi/v1/customers/[39m[33m{customer}[39m[37m/family-members[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api\V1\FamilyMembe…[39m
+  [33mPUT[39m             [37mapi/v1/customers/[39m[33m{customer}[39m[37m/family-members/[39m[33m{familyMember}[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api…[39m
+  [31mDELETE[39m          [37mapi/v1/customers/[39m[33m{customer}[39m[37m/family-members/[39m[33m{familyMember}[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers/[39m[33m{customer}[39m[37m/measurements[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\Measuremen…[39m
+  [33mPOST[39m            [37mapi/v1/customers/[39m[33m{customer}[39m[37m/measurements[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\Measuremen…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers/[39m[33m{customer}[39m[37m/orders[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api\V1\CustomerController@…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/customers/[39m[33m{customer}[39m[37m/timeline[39m[38;5;103m App\Modules\Customer\Http\Controllers\Api\V1\CustomerControlle…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/cutting/bundles/[39m[33m{bundle}[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\BundleController@show[39m
+  [33mPOST[39m            [37mapi/v1/cutting/items/[39m[33m{item}[39m[37m/allocate-fabric[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\FabricAl…[39m
+  [33mPOST[39m            [37mapi/v1/cutting/items/[39m[33m{item}[39m[37m/complete-cutting[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Cutting…[39m
+  [33mPOST[39m            [37mapi/v1/cutting/items/[39m[33m{item}[39m[37m/release-fabric[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\FabricAll…[39m
+  [33mPOST[39m            [37mapi/v1/cutting/items/[39m[33m{item}[39m[37m/start-cutting[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\CuttingAct…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/cutting/queue[39m[38;5;103m ... App\Modules\Production\Http\Controllers\Api\V1\CuttingQueueController@index[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/damage-reports[39m[38;5;103m ... App\Modules\Inventory\Http\Controllers\Api\V1\DamageReportController@index[39m
+  [33mPOST[39m            [37mapi/v1/damage-reports[39m[38;5;103m ... App\Modules\Inventory\Http\Controllers\Api\V1\DamageReportController@store[39m
+  [33mPOST[39m            [37mapi/v1/damage-reports/photos[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\DamageReportPhotoControl…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/damage-reports/photos/[39m[33m{photo}[39m[37m/download[39m[38;5;103m damage-reports.photos.download › App\Modules\Inventor…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/damage-reports/[39m[33m{damageReport}[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\DamageReportCont…[39m
+  [33mPOST[39m            [37mapi/v1/damage-reports/[39m[33m{damageReport}[39m[37m/approve[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\DamageRe…[39m
+  [33mPOST[39m            [37mapi/v1/damage-reports/[39m[33m{damageReport}[39m[37m/reject[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\DamageRep…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/dashboard/summary[39m[38;5;103m . App\Modules\Reporting\Http\Controllers\Api\V1\DashboardController@summary[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/deliveries[39m[38;5;103m ............ App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryController@index[39m
+  [33mPOST[39m            [37mapi/v1/deliveries[39m[38;5;103m ............ App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryController@store[39m
+  [33mPOST[39m            [37mapi/v1/deliveries/[39m[33m{delivery}[39m[37m/attempt[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryAttemptCo…[39m
+  [33mPOST[39m            [37mapi/v1/deliveries/[39m[33m{delivery}[39m[37m/cancel[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryController…[39m
+  [33mPOST[39m            [37mapi/v1/deliveries/[39m[33m{delivery}[39m[37m/confirm[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryConfirmat…[39m
+  [33mPOST[39m            [37mapi/v1/deliveries/[39m[33m{delivery}[39m[37m/dispatch[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\DeliveryControll…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/documents[39m[38;5;103m ............. App\Modules\Printing\Http\Controllers\Api\V1\DocumentController@index[39m
+  [33mPOST[39m            [37mapi/v1/documents/regenerate[39m[38;5;103m App\Modules\Printing\Http\Controllers\Api\V1\DocumentController@regener…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/documents/[39m[33m{document}[39m[37m/download[39m[38;5;103m documents.download › App\Modules\Printing\Http\Controllers\Api…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/finance/dashboard/summary[39m[38;5;103m App\Modules\Finance\Http\Controllers\Api\V1\FinanceDashboardContro…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/finance/invoices[39m[38;5;103m ........ App\Modules\Finance\Http\Controllers\Api\V1\InvoiceController@index[39m
+  [33mPOST[39m            [37mapi/v1/finance/invoices[39m[38;5;103m ........ App\Modules\Finance\Http\Controllers\Api\V1\InvoiceController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/finance/invoices/[39m[33m{invoice}[39m[38;5;103m App\Modules\Finance\Http\Controllers\Api\V1\InvoiceController@show[39m
+  [33mPOST[39m            [37mapi/v1/finance/invoices/[39m[33m{invoice}[39m[37m/credit-note[39m[38;5;103m App\Modules\Finance\Http\Controllers\Api\V1\CreditNot…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/finance/invoices/[39m[33m{invoice}[39m[37m/pdf[39m[38;5;103m App\Modules\Finance\Http\Controllers\Api\V1\InvoiceController…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/finance/orders/[39m[33m{order}[39m[37m/outstanding-balance[39m[38;5;103m App\Modules\Finance\Http\Controllers\Api\V1\Invoi…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/finance/outstanding[39m[38;5;103m App\Modules\Finance\Http\Controllers\Api\V1\InvoiceController@outstanding[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/finance/payments[39m[38;5;103m ........ App\Modules\Finance\Http\Controllers\Api\V1\PaymentController@index[39m
+  [33mPOST[39m            [37mapi/v1/finance/payments[39m[38;5;103m ........ App\Modules\Finance\Http\Controllers\Api\V1\PaymentController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/front-desk/dashboard[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\FrontDeskDashboardController@…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/front-desk/drafts[39m[38;5;103m .. App\Modules\Order\Http\Controllers\Api\V1\FrontDeskDraftController@index[39m
+  [33mPOST[39m            [37mapi/v1/front-desk/drafts[39m[38;5;103m .. App\Modules\Order\Http\Controllers\Api\V1\FrontDeskDraftController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/front-desk/drafts/[39m[33m{draft}[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\FrontDeskDraftController…[39m
+  [33mPATCH[39m           [37mapi/v1/front-desk/drafts/[39m[33m{draft}[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\FrontDeskDraftController…[39m
+  [31mDELETE[39m          [37mapi/v1/front-desk/drafts/[39m[33m{draft}[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\FrontDeskDraftController…[39m
+  [33mPOST[39m            [37mapi/v1/front-desk/drafts/[39m[33m{draft}[39m[37m/convert[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\FrontDeskDraftCo…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/health[39m[38;5;103m ................. health › App\Modules\Shared\Http\Controllers\Api\V1\HealthController[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/fabric-rolls[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\FabricRollController@in…[39m
+  [33mPOST[39m            [37mapi/v1/inventory/fabric-rolls[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\FabricRollController@st…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/fabric-rolls/[39m[33m{fabricRoll}[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\FabricRoll…[39m
+  [33mPOST[39m            [37mapi/v1/inventory/fabric-rolls/[39m[33m{fabricRoll}[39m[37m/adjust[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\Fab…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/fabric-rolls/[39m[33m{fabricRoll}[39m[37m/ledger[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\Fab…[39m
+  [33mPATCH[39m           [37mapi/v1/inventory/fabric-rolls/[39m[33m{fabricRoll}[39m[37m/threshold[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/fabric-types[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\FabricTypeController@in…[39m
+  [33mPOST[39m            [37mapi/v1/inventory/fabric-types[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\FabricTypeController@st…[39m
+  [33mPUT[39m             [37mapi/v1/inventory/fabric-types/[39m[33m{fabricType}[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\FabricType…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/low-stock[39m[38;5;103m .. App\Modules\Inventory\Http\Controllers\Api\V1\LowStockController@index[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/movements[39m[38;5;103m .. App\Modules\Inventory\Http\Controllers\Api\V1\MovementController@index[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/purchase-orders[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\PurchaseOrderControl…[39m
+  [33mPOST[39m            [37mapi/v1/inventory/purchase-orders[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\PurchaseOrderControl…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/purchase-orders/[39m[33m{purchaseOrder}[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\Purc…[39m
+  [33mPOST[39m            [37mapi/v1/inventory/purchase-orders/[39m[33m{purchaseOrder}[39m[37m/cancel[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\…[39m
+  [33mPOST[39m            [37mapi/v1/inventory/purchase-orders/[39m[33m{purchaseOrder}[39m[37m/place[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V…[39m
+  [33mPOST[39m            [37mapi/v1/inventory/purchase-orders/[39m[33m{purchaseOrder}[39m[37m/receive[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/inventory/suppliers[39m[38;5;103m .. App\Modules\Inventory\Http\Controllers\Api\V1\SupplierController@index[39m
+  [33mPOST[39m            [37mapi/v1/inventory/suppliers[39m[38;5;103m .. App\Modules\Inventory\Http\Controllers\Api\V1\SupplierController@store[39m
+  [33mPUT[39m[38;5;103m|[39m[33mPATCH[39m       [37mapi/v1/inventory/suppliers/[39m[33m{supplier}[39m[38;5;103m App\Modules\Inventory\Http\Controllers\Api\V1\SupplierControl…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/measurements/pending-approval[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\MeasurementVer…[39m
+  [33mPATCH[39m           [37mapi/v1/measurements/profiles/[39m[33m{profile}[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\MeasurementP…[39m
+  [31mDELETE[39m          [37mapi/v1/measurements/profiles/[39m[33m{profile}[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\MeasurementP…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/measurements/profiles/[39m[33m{profile}[39m[37m/versions[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\Mea…[39m
+  [33mPOST[39m            [37mapi/v1/measurements/profiles/[39m[33m{profile}[39m[37m/versions[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\Mea…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/measurements/versions/[39m[33m{version}[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\MeasurementV…[39m
+  [33mPOST[39m            [37mapi/v1/measurements/versions/[39m[33m{version}[39m[37m/approve[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\Meas…[39m
+  [33mPOST[39m            [37mapi/v1/measurements/versions/[39m[33m{version}[39m[37m/reject[39m[38;5;103m App\Modules\Measurement\Http\Controllers\Api\V1\Measu…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/notifications[39m[38;5;103m .... App\Modules\Reporting\Http\Controllers\Api\V1\NotificationController@index[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders[39m[38;5;103m ...................... App\Modules\Order\Http\Controllers\Api\V1\OrderController@index[39m
+  [33mPOST[39m            [37mapi/v1/orders[39m[38;5;103m ...................... App\Modules\Order\Http\Controllers\Api\V1\OrderController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/lookup[39m[38;5;103m .... App\Modules\Order\Http\Controllers\Api\V1\FrontDeskLookupController@orders[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[38;5;103m ............... App\Modules\Order\Http\Controllers\Api\V1\OrderController@show[39m
+  [33mPUT[39m             [37mapi/v1/orders/[39m[33m{order}[39m[38;5;103m ............. App\Modules\Order\Http\Controllers\Api\V1\OrderController@update[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/cancel[39m[38;5;103m ...... App\Modules\Order\Http\Controllers\Api\V1\OrderController@cancel[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/confirm[39m[38;5;103m .... App\Modules\Order\Http\Controllers\Api\V1\OrderController@confirm[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/handover[39m[38;5;103m .. App\Modules\Order\Http\Controllers\Api\V1\HandoverController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/handover-eligibility[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\HandoverContro…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/items[39m[38;5;103m .... App\Modules\Order\Http\Controllers\Api\V1\OrderItemController@store[39m
+  [33mPUT[39m             [37mapi/v1/orders/[39m[33m{order}[39m[37m/items/[39m[33m{item}[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderItemController@up…[39m
+  [31mDELETE[39m          [37mapi/v1/orders/[39m[33m{order}[39m[37m/items/[39m[33m{item}[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderItemController@de…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/items/[39m[33m{item}[39m[37m/box[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderItemBoxContro…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/items/[39m[33m{item}[39m[37m/job-card[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\ItemJobCardCo…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/items/[39m[33m{item}[39m[37m/mark-placed-in-box[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\Ord…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/items/[39m[33m{item}[39m[37m/payment-summary[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\ItemPa…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/items/[39m[33m{item}[39m[37m/print-log[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderItemBox…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/job-card[39m[38;5;103m .... App\Modules\Order\Http\Controllers\Api\V1\JobCardController@show[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/notifications[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderNotificationCont…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/notifications/preview[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderNotifica…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/notifications/whatsapp[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderNotific…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/payments[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderPaymentController@ind…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/payments[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\OrderPaymentController@sto…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/pickup-batches[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\PickupBatchControlle…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/pickup-batches/[39m[33m{pickupBatch}[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V1\Pickup…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/pickup-batches/[39m[33m{pickupBatch}[39m[37m/handover[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\…[39m
+  [33mPOST[39m            [37mapi/v1/orders/[39m[33m{order}[39m[37m/pickup-batches/[39m[33m{pickupBatch}[39m[37m/payments[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/orders/[39m[33m{order}[39m[37m/pickup-batches/[39m[33m{pickupBatch}[39m[37m/receipt[39m[38;5;103m App\Modules\Order\Http\Controllers\Api\V…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/permissions[39m[38;5;103m ......... App\Modules\Identity\Http\Controllers\Api\V1\PermissionController@index[39m
+  [33mPOST[39m            [37mapi/v1/permissions[39m[38;5;103m ......... App\Modules\Identity\Http\Controllers\Api\V1\PermissionController@store[39m
+  [33mPUT[39m             [37mapi/v1/permissions/[39m[33m{permission}[39m[38;5;103m App\Modules\Identity\Http\Controllers\Api\V1\PermissionController@u…[39m
+  [31mDELETE[39m          [37mapi/v1/permissions/[39m[33m{permission}[39m[38;5;103m App\Modules\Identity\Http\Controllers\Api\V1\PermissionController@d…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/board[39m[38;5;103m . App\Modules\Production\Http\Controllers\Api\V1\KanbanBoardController@index[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionItemController@ind…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items/[39m[33m{item}[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionItemControl…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items/[39m[33m{item}[39m[37m/cloth-damage[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Producti…[39m
+  [33mPOST[39m            [37mapi/v1/production/items/[39m[33m{item}[39m[37m/cloth-damage[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Producti…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items/[39m[33m{item}[39m[37m/fabric-allocation[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Pro…[39m
+  [33mPOST[39m            [37mapi/v1/production/items/[39m[33m{item}[39m[37m/fabric-allocation[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Pro…[39m
+  [33mPATCH[39m           [37mapi/v1/production/items/[39m[33m{item}[39m[37m/fabric-allocation/consume[39m[38;5;103m App\Modules\Production\Http\Controllers\Ap…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items/[39m[33m{item}[39m[37m/history[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionIte…[39m
+  [33mPOST[39m            [37mapi/v1/production/items/[39m[33m{item}[39m[37m/mark-packed[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Productio…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items/[39m[33m{item}[39m[37m/packing[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionPac…[39m
+  [33mPOST[39m[38;5;103m|[39m[33mPATCH[39m      [37mapi/v1/production/items/[39m[33m{item}[39m[37m/packing-checklist[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Pro…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items/[39m[33m{item}[39m[37m/packing-slip[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Producti…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/items/[39m[33m{item}[39m[37m/qc[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionQcContro…[39m
+  [33mPOST[39m            [37mapi/v1/production/items/[39m[33m{item}[39m[37m/qc/fail[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionQcC…[39m
+  [33mPOST[39m            [37mapi/v1/production/items/[39m[33m{item}[39m[37m/qc/pass[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionQcC…[39m
+  [33mPOST[39m            [37mapi/v1/production/items/[39m[33m{item}[39m[37m/transition[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Production…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/production/search-code[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ProductionItemControll…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/qc/defects/analytics[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\DefectCategoryController…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/qc/defects/categories[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\DefectCategoryControlle…[39m
+  [33mPOST[39m            [37mapi/v1/qc/defects/categories[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\DefectCategoryControlle…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/qc/items/[39m[33m{item}[39m[37m/history[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\QcInspectionControlle…[39m
+  [33mPOST[39m            [37mapi/v1/qc/items/[39m[33m{item}[39m[37m/inspect[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\QcInspectionControlle…[39m
+  [33mPOST[39m            [37mapi/v1/qc/items/[39m[33m{item}[39m[37m/rework-override[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\ReworkOverrid…[39m
+  [33mPOST[39m            [37mapi/v1/qc/photos[39m[38;5;103m ............ App\Modules\Production\Http\Controllers\Api\V1\QcPhotoController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/qc/photos/[39m[33m{photo}[39m[37m/download[39m[38;5;103m qc.photos.download › App\Modules\Production\Http\Controllers\Api\…[39m
+  [33mPOST[39m            [37mapi/v1/rack/items/[39m[33m{item}[39m[37m/assign[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\RackAssignmentControll…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/rack/items/[39m[33m{item}[39m[37m/current-slot[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\RackAssignmentCo…[39m
+  [33mPOST[39m            [37mapi/v1/rack/items/[39m[33m{item}[39m[37m/release[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\RackAssignmentControl…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/rack/search[39m[38;5;103m ........ App\Modules\Order\Http\Controllers\Api\V1\FrontDeskLookupController@rack[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/rack/slots[39m[38;5;103m ............ App\Modules\Delivery\Http\Controllers\Api\V1\RackSlotController@index[39m
+  [33mPOST[39m            [37mapi/v1/rack/slots[39m[38;5;103m ............ App\Modules\Delivery\Http\Controllers\Api\V1\RackSlotController@store[39m
+  [33mPUT[39m             [37mapi/v1/rack/slots/[39m[33m{rackSlot}[39m[38;5;103m App\Modules\Delivery\Http\Controllers\Api\V1\RackSlotController@update[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports[39m[38;5;103m ................ App\Modules\Reporting\Http\Controllers\Api\V1\ReportController@index[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/damage[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportController@dama…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/dashboard[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportController@d…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/inventory/stock[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportContro…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/jobs/[39m[33m{reportJob}[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ReportJobController@s…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/jobs/[39m[33m{reportJob}[39m[37m/download[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ReportJobCon…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/orders/daily[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportControlle…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/payments/pending[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportContr…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/production/stages[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportCont…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/purchases[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportController@p…[39m
+  [33mPOST[39m            [37mapi/v1/reports/run[39m[38;5;103m .............. App\Modules\Reporting\Http\Controllers\Api\V1\ReportController@run[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/reports/sales-gst[39m[38;5;103m App\Modules\Reporting\Http\Controllers\Api\V1\ManagementReportController@s…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/roles[39m[38;5;103m ..................... App\Modules\Identity\Http\Controllers\Api\V1\RoleController@index[39m
+  [33mPOST[39m            [37mapi/v1/roles[39m[38;5;103m ..................... App\Modules\Identity\Http\Controllers\Api\V1\RoleController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/roles/[39m[33m{role}[39m[38;5;103m ............... App\Modules\Identity\Http\Controllers\Api\V1\RoleController@show[39m
+  [33mPUT[39m             [37mapi/v1/roles/[39m[33m{role}[39m[38;5;103m ............. App\Modules\Identity\Http\Controllers\Api\V1\RoleController@update[39m
+  [31mDELETE[39m          [37mapi/v1/roles/[39m[33m{role}[39m[38;5;103m ............ App\Modules\Identity\Http\Controllers\Api\V1\RoleController@destroy[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/search[39m[38;5;103m .......................... App\Modules\Shared\Http\Controllers\Api\V1\SearchController[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/tailoring/assignments[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\TailorAssignmentControl…[39m
+  [33mPOST[39m            [37mapi/v1/tailoring/assignments[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\TailorAssignmentControl…[39m
+  [33mPOST[39m            [37mapi/v1/tailoring/assignments/[39m[33m{assignment}[39m[37m/complete[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\T…[39m
+  [33mPOST[39m            [37mapi/v1/tailoring/assignments/[39m[33m{assignment}[39m[37m/reassign[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\T…[39m
+  [33mPOST[39m            [37mapi/v1/tailoring/assignments/[39m[33m{assignment}[39m[37m/start[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\Tail…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/tailoring/performance/[39m[33m{tailor}[39m[38;5;103m App\Modules\Production\Http\Controllers\Api\V1\TailorPerforma…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/users[39m[38;5;103m ..................... App\Modules\Identity\Http\Controllers\Api\V1\UserController@index[39m
+  [33mPOST[39m            [37mapi/v1/users[39m[38;5;103m ..................... App\Modules\Identity\Http\Controllers\Api\V1\UserController@store[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mapi/v1/users/[39m[33m{user}[39m[38;5;103m ............... App\Modules\Identity\Http\Controllers\Api\V1\UserController@show[39m
+  [33mPUT[39m             [37mapi/v1/users/[39m[33m{user}[39m[38;5;103m ............. App\Modules\Identity\Http\Controllers\Api\V1\UserController@update[39m
+  [31mDELETE[39m          [37mapi/v1/users/[39m[33m{user}[39m[38;5;103m ............ App\Modules\Identity\Http\Controllers\Api\V1\UserController@destroy[39m
+  [33mPOST[39m            [37mapi/v1/users/[39m[33m{user}[39m[37m/activate[39m[38;5;103m .. App\Modules\Identity\Http\Controllers\Api\V1\UserController@activate[39m
+  [33mPOST[39m            [37mapi/v1/users/[39m[33m{user}[39m[37m/assign-role[39m[38;5;103m App\Modules\Identity\Http\Controllers\Api\V1\UserController@assignR…[39m
+  [33mPOST[39m            [37mapi/v1/users/[39m[33m{user}[39m[37m/deactivate[39m[38;5;103m App\Modules\Identity\Http\Controllers\Api\V1\UserController@deactiva…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37msanctum/csrf-cookie[39m[38;5;103m .............. sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mstorage/[39m[33m{path}[39m[38;5;103m storage.local › vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemService…[39m
+  [33mPUT[39m             [37mstorage/[39m[33m{path}[39m[38;5;103m storage.local.upload › vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem…[39m
+  [34mGET[39m[38;5;103m|[39m[38;5;103mHEAD[39m        [37mup[39m[38;5;103m ..... vendor/laravel/framework/src/Illuminate/Foundation/Configuration/ApplicationBuilder.php:219[39m
+
+                                                                                                  [34;1mShowing [212] routes[39;22m
+
